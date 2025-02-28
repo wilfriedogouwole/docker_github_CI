@@ -35,7 +35,8 @@ COPY --from=builder /app/start.sh /app/start.sh
 
 EXPOSE 3000
 
-RUN chmod +x /start.sh
+RUN chmod +x /app/start.sh
 
-ENTRYPOINT [ "./start.sh" ]
+ENTRYPOINT ["/app/start.sh"]
+
 #CMD ["npm", "run", "start"]
