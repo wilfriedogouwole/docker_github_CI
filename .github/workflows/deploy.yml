@@ -13,7 +13,7 @@ permissions:
 jobs:
   lint:
     name: ⬣ ESLint
-    runs-on: debian-latest
+    runs-on: ubuntu-latest
     steps:
       - name: 🛑 Cancel Previous Runs
         uses: styfle/cancel-workflow-action@0.11.0
@@ -72,7 +72,7 @@ jobs:
     runs-on: [self-hosted]
     needs: [lint, typecheck, build]
     # only build/deploy main branch on pushes
-    if: ${{ github.ref == 'refs/heads/main' && github.event_name == 'push' }}
+    if: ${{ ( github.ref == 'refs/heads/main'  || github.ref == 'refs/heads/dev') && github.event_name == 'push' }}
     # env:
     #   APP_ENV: ${{ secrets.APP_ENV }}
 

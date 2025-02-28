@@ -12,9 +12,9 @@ jobs:
   build:
     name: 🐳 Build
     # only build/deploy main branch on pushes
-    if: ${{ github.ref == 'refs/heads/main' && github.event_name == 'push' }}
+    if: ${{( github.ref == 'refs/heads/main'  || github.ref == 'refs/heads/dev') && github.event_name == 'push' }}
     # if: ${{ (github.ref == 'refs/heads/main') && github.event_name == 'push' }}
-    runs-on: debian-latest
+    runs-on: ubuntu-latest
     steps:
       - name: 🛑 Cancel Previous Runs
         uses: styfle/cancel-workflow-action@0.12.1
