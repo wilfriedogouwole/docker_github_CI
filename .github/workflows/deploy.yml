@@ -67,7 +67,7 @@ jobs:
     secrets: inherit
 
 
-  #deploy:
+  deploy:
     name: 🚀 Deploy
     runs-on: [self-hosted]
     needs: [lint, typecheck, build]
@@ -86,11 +86,11 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: 🚀 Run Docker Compose on Production
+      - name: 🚀 Run Docker Compose on v1
         if: ${{ github.ref == 'refs/heads/main' }}
         env:
           APP_ENV: ${{ secrets.APP_ENV }}
         run: |
-          docker pull varkoff/deployed-app:production
-          docker run -p 3000:3000 -d varkoff/deployed-app:production
+          docker pull derrick93/nextdocker:v1
+          docker run -p 4000:3000 -d derrick93/nextdocker:v1
           docker system prune --all --volumes --force

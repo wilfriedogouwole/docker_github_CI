@@ -54,13 +54,13 @@ jobs:
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,mode=max,dest=/tmp/.buildx-cache-new
 
-- name: 🐳 Build V2 Image
+      - name: 🐳 Build V2 Image
         if: ${{ github.ref == 'refs/heads/dev' }}
         uses: docker/build-push-action@v3
         with:
           context: .
           push: true
-          tags: derrick93/nextdocker:v2 
+          tags: derrick93/nextdocker:v2
           build-args: |
             COMMIT_SHA=${{ github.sha }} \
             APP_ENV=${{ secrets.APP_ENV }} \
