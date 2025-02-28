@@ -66,8 +66,8 @@ jobs:
     uses: ./.github/workflows/build.yml
     secrets: inherit
 
-    
-  deploy:
+
+  #deploy:
     name: 🚀 Deploy
     runs-on: [self-hosted]
     needs: [lint, typecheck, build]
