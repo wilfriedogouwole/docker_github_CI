@@ -8,6 +8,8 @@ WORKDIR /app
 
 # Copier les fichiers package.json et package-lock.json
 COPY package.json package-lock.json ./
+# Copier le dossier prisma AVANT npm install
+COPY prisma ./prisma/
 
 # Installer les dépendances
 RUN npm install
@@ -30,13 +32,11 @@ COPY --from=builder /app/package.json /app/package-lock.json ./
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/prisma ./prisma
 COPY --from=builder /app/start.sh /app/start.sh
-
 
 EXPOSE 3000
 
 RUN chmod +x /app/start.sh
 
 ENTRYPOINT ["/app/start.sh"]
-
-#CMD ["npm", "run", "start"]
