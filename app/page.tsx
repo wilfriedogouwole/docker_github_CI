@@ -1,8 +1,8 @@
 "use client"
-import Link from "next/link"
 import { Navbar } from "@/components/layout/navbar"
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
+import Link from "next/link"
 
 export default function Home() {
   return (
@@ -15,7 +15,7 @@ export default function Home() {
               <div className="flex flex-col justify-center space-y-4">
                 <div className="space-y-2">
                   <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
-                    Bienvenue sur notre application
+                    Bienvenue sur notre application cv
                   </h1>
                   <p className="max-w-[600px] text-muted-foreground md:text-xl">
                     Une application moderne avec authentification et tableau de bord personnalisé.
@@ -90,7 +90,7 @@ export default function Home() {
   )
 }
 
-import { ShieldCheck, BarChart, Database } from "lucide-react"
+import { BarChart, Database, ShieldCheck } from "lucide-react"
 
 const features = [
   {
